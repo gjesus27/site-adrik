@@ -15,19 +15,24 @@ const estado = document.getElementById("estado").value;
 const complemento = document.getElementById("complemento").value;
 
 
- const texto = `
+const enderecoMaps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  rua + " " + numero + ", " + bairro + ", " + cidade + " - " + estado
+)}`;
+
+const texto = `
 Olá, meu nome é ${nome}.
 WhatsApp: ${telefone}
 
 Tipo de cliente: ${tipoCliente}
-Serviço: ${servico}
+Serviço solicitado: ${servico}
 
 Endereço do serviço:
 ${rua}, ${numero}
-Bairro: ${bairro}
-Cidade: ${cidade} - ${estado}
+${bairro} - ${cidade}/${estado}
 CEP: ${cep}
-Complemento: ${complemento}
+
+Localização no mapa:
+${enderecoMaps}
 
 Observações:
 ${mensagem}
@@ -94,5 +99,25 @@ window.addEventListener('scroll', () => {
     animarContadores();
     ativado = true;
   }
+});
+
+document.getElementById("cep").addEventListener("blur", () => {
+  let cep = document.getElementById("cep").value.replace(/\D/g, '');
+
+  if (cep.length !== 8) return;
+
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.erro) return;
+
+      document.getElementById("rua").value = data.logradouro;
+      document.getElementById("bairro").value = data.bairro;
+      document.getElementById("cidade").value = data.localidade;
+      document.getElementById("estado").value = data.uf;
+    })
+    .catch(() => {
+      console.log("Erro ao buscar CEP");
+    });
 });
 
