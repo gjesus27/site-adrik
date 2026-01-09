@@ -6,12 +6,31 @@ document.getElementById("formOrcamento").addEventListener("submit", function(e) 
   const tipoCliente = document.getElementById("tipoCliente").value;
   const servico = document.getElementById("servico").value;
   const mensagem = document.getElementById("mensagem").value;
+const cep = document.getElementById("cep").value;
+const rua = document.getElementById("rua").value;
+const numero = document.getElementById("numero").value;
+const bairro = document.getElementById("bairro").value;
+const cidade = document.getElementById("cidade").value;
+const estado = document.getElementById("estado").value;
+const complemento = document.getElementById("complemento").value;
 
-  const texto = `
+
+ const texto = `
 Olá, meu nome é ${nome}.
+WhatsApp: ${telefone}
+
 Tipo de cliente: ${tipoCliente}
 Serviço: ${servico}
-Mensagem: ${mensagem}
+
+Endereço do serviço:
+${rua}, ${numero}
+Bairro: ${bairro}
+Cidade: ${cidade} - ${estado}
+CEP: ${cep}
+Complemento: ${complemento}
+
+Observações:
+${mensagem}
 `;
 
   const textoFormatado = encodeURIComponent(texto);
@@ -76,3 +95,4 @@ window.addEventListener('scroll', () => {
     ativado = true;
   }
 });
+
