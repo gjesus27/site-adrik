@@ -853,3 +853,21 @@ html {
   }
 }
 
+@media (max-width: 768px) {
+  .nav {
+    display: none !important;
+  }
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  .header {
+    justify-content: center;
+  }
+
+  .btn-contato {
+    display: none;
+  }
+}
+
