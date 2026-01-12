@@ -45,8 +45,6 @@ ${mensagem}
   window.open(url, "_blank");
 });
 
-const menuToggle = document.getElementById("menuToggle");
-const nav = document.querySelector(".nav");
 
 menuToggle.addEventListener("click", () => {
   nav.classList.toggle("active");
@@ -120,4 +118,5 @@ document.getElementById("cep").addEventListener("blur", () => {
       console.log("Erro ao buscar CEP");
     });
 });
+
 
