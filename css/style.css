@@ -284,6 +284,12 @@ html, body {
   }
 }
 
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: 80px;
+  }
+}
+
 
 /* ===== ORÇAMENTO ===== */
 .orcamento {
