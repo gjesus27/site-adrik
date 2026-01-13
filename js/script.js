@@ -94,17 +94,18 @@ function animarContadores() {
 
   if (sectionTop < screenPosition && !animou) {
     contadores.forEach(contador => {
-      const alvo = Number(contador.dataset.target); // 🔥 AQUI O FIX
+      const alvo = Number(contador.dataset.target);
       let atual = 0;
       const incremento = Math.ceil(alvo / 80);
 
       const timer = setInterval(() => {
         atual += incremento;
+
         if (atual >= alvo) {
-          contador.innerText = alvo;
+          contador.innerText = `+ de ${alvo}`;
           clearInterval(timer);
         } else {
-          contador.innerText = atual;
+          contador.innerText = `+ de ${atual}`;
         }
       }, 30);
     });
@@ -151,3 +152,4 @@ function buscarCEP(cep) {
       console.log("Erro ao buscar CEP");
     });
 }
+
